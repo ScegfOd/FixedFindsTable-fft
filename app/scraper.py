@@ -8,7 +8,7 @@ def scrape(season):
 Index zero is the dataframe that is the lookup table, with indicies being the time in half-hour increments written as an integer that combines the hour and minutes from a 24 hour clock (1234 would refer to 12:34 pm).
 Index one contains a datetime object referring to the Saturday after the Friday in the aforementioned dataframe."""
 	headers = {
-		"User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36",
+		"User-Agent": "XYZ/3.0",
    		"X-Requested-With": "XMLHttpRequest",
    		"cookie": "value stored in your webpage",
    	}
