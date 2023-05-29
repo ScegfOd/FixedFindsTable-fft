@@ -7,11 +7,6 @@ def scrape(season):
 	"""returns a length 2 tuple.
 Index zero is the dataframe that is the lookup table, with indicies being the time in half-hour increments written as an integer that combines the hour and minutes from a 24 hour clock (1234 would refer to 12:34 pm).
 Index one contains a datetime object referring to the Saturday after the Friday in the aforementioned dataframe."""
-	headers = {
-		"User-Agent": "XYZ/3.0",
-   		"X-Requested-With": "XMLHttpRequest",
-   		"cookie": "value stored in your webpage",
-   	}
 	table_df = pd.read_html(f"http://www.csueastbay.edu/students/academics-and-studying/finals/{season}.html")[0]
 
 	#get clean dates from table...
