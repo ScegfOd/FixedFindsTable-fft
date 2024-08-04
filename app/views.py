@@ -46,7 +46,7 @@ def index():
 		response1 += " starting at "
 		response1 += time
 		#convert time to number...
-		time_list = re.findall("\d+", time)
+		time_list = re.findall(r"\d+", time)
 		half_hour =  int(time_list[0]) * 100
 		if int(time_list[1]) > 30:
 			half_hour += 30

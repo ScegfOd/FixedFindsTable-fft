@@ -12,7 +12,7 @@ Index one contains a datetime object referring to the Saturday after the Friday 
 	#get clean dates from table...
 	clean_headers = ['Times']
 	for x in table_df.columns[1:]:
-		date = re.findall('\w+, \w+ \d+', x)[0]
+		date = re.findall(r"\w+, \w+ \d+", x)[0]
 		if date[-2] in [' ', '2', '3'] and date[-1] in ['1','2','3']:
 			if date[-1] == '1':
 				date += 'st'
@@ -23,7 +23,7 @@ Index one contains a datetime object referring to the Saturday after the Friday 
 		else:
 			date += 'th'
 		clean_headers.append(date)
-	saturday_after_finals = re.findall("\w+ \d+, \d+",table_df.columns[-1])[0]
+	saturday_after_finals = re.findall(r"\w+ \d+, \d+",table_df.columns[-1])[0]
 	saturday_after_finals = datetime.datetime.strptime(saturday_after_finals, "%B %d, %Y")
 	saturday_after_finals += datetime.timedelta(days=1)
 	table_df.columns = clean_headers
@@ -47,10 +47,10 @@ Index one contains a datetime object referring to the Saturday after the Friday 
 	for col in table_df.columns[1:]: #dates
 		for x in range(0,num_season_time_slots):
 			class_DTs = table_df.loc[x,col]
-			lookup_set = re.findall("\w+ [0-9]+:?[0-9]*-[0-9]+:[0-9]+ [ap]m", class_DTs) #turn the box of time ranges from the CSUEB finals table into a list of strings
+			lookup_set = re.findall(r"\w+ [0-9]+:?[0-9]*-[0-9]+:[0-9]+ [ap]m", class_DTs) #turn the box of time ranges from the CSUEB finals table into a list of strings
 			for y in lookup_set: #GETS EACH STR IN THE LIST JUST CREATED OUT OF TABLE ENTRY
 				start_end_times = re.findall("[0-9]+:?[0-9]*",y) #start and end time ranges
-				days_class_meets = re.findall("\w+",y)[0] #first 1-3 letters
+				days_class_meets = re.findall(r"\w+",y)[0] #first 1-3 letters
 				start_hours_minutes = re.findall("[0-9]+",start_end_times[0]) #length 1 or 2 list of the hour and optional minute of the start of the time range, index 1 is the minutes (if present)
 				end_hours_minutes = re.findall("[0-9]+",start_end_times[1]) #as above, but for the end of the time range, and the minutes are always present as far as I can tell
 				#turn the start time into an integer number
